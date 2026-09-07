@@ -168,7 +168,7 @@ const portfolioData = {
  'bubberry': [
   'https://picsum.photos/1200/800?random=16'
  ],
-'Chloe': [
+ 'Chloe': [
   'https://i.postimg.cc/90nrgBfS/1SSH09327.jpg',
   'https://i.postimg.cc/D0M8pcZF/2SSH09516.jpg',
   'https://i.postimg.cc/7hWftN6P/3SSH09352.jpg',
@@ -263,16 +263,13 @@ function getActiveImages() {
  return [];
 }
 
-// 专门针对 TOM&JERRY 和 经典系列 的拼卡打包逻辑
 function getFormattedCards() {
  const rawImages = getActiveImages();
 
- // 如果是经典系列且正好有4张图，打包为 1 个 4格拼图卡片
  if (currentBrand === 'Pizza Hut' && currentSubGroup === '经典系列' && rawImages.length === 4) {
   return [{ type: 'grid-4', images: rawImages }];
  }
 
- // 如果是 TOM&JERRY，按需求把图片每两张一组拼成双格卡片
  if (currentBrand === 'Pizza Hut' && currentSubGroup === 'TOM&JERRY') {
   let cards = [];
   for (let i = 0; i < rawImages.length; i += 2) {
@@ -285,12 +282,11 @@ function getFormattedCards() {
   return cards;
  }
 
- // 其他常规分类：每张图独立成卡
  return rawImages.map(src => ({ type: 'single', images: [src] }));
 }
 
 // ==========================================
-// 5. 画廊渲染主逻辑（完美支持拼图与单张混合排版）
+// 5. 画廊渲染主逻辑
 // ==========================================
 async function buildGallery() {
  const displayCards = getFormattedCards();
@@ -462,21 +458,21 @@ if (mainContent) {
 window.addEventListener('resize', updateSlider);
 
 buildGallery();
+
 // 手机端点击左侧触发区域或侧边栏时切换展开状态
 const sidebarTrigger = document.querySelector('.sidebar-trigger');
 const sidebar = document.querySelector('.sidebar');
 
 if (sidebarTrigger && sidebar) {
-  sidebarTrigger.addEventListener('click', () => {
-    sidebar.style.transform = sidebar.style.transform === 'translateX(0px)' ? 'translateX(-100%)' : 'translateX(0)';
+ sidebarTrigger.addEventListener('click', () => {
+  sidebar.style.transform = sidebar.style.transform === 'translateX(0px)' ? 'translateX(-100%)' : 'translateX(0)';
+ });
+ 
+ sidebar.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+   if (window.innerWidth <= 768) {
+    sidebar.style.transform = 'translateX(-100%)';
+   }
   });
-  
-  // 点击侧边栏内部的链接后自动收起侧边栏（提升手机端体验）
-  sidebar.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 768) {
-        sidebar.style.transform = 'translateX(-100%)';
-      }
-    });
-  });
+ });
 }

@@ -265,8 +265,6 @@ html, body {
 /* ==========================================
    4.1 网格布局预设
    ========================================== */
-
-/* 经典系列：单行 4 列 */
 .grid-container-4 {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
@@ -277,7 +275,6 @@ html, body {
   padding: 12px !important;
 }
 
-/* TOM & JERRY 拼图：左右 2 列 */
 .grid-container-2 {
   display: grid !important;
   grid-template-columns: repeat(2, 1fr) !important;
@@ -304,7 +301,7 @@ html, body {
   height: 100% !important;
   max-width: 100% !important;
   max-height: 100% !important;
-  object-fit: contain !important; /* 完整画面等比显示，零裁切 */
+  object-fit: contain !important;
   border-radius: 0 !important;
 }
 
@@ -331,7 +328,7 @@ html, body {
 }
 
 /* ==========================================
-   5. 最边缘微动效按钮
+   5. 左右切换按钮与计数器
    ========================================== */
 .nav-btn {
   position: fixed !important;
@@ -385,15 +382,13 @@ html, body {
 }
 
 /* ==========================================
-   6. 移动端响应式完美适配（仅针对手机屏幕优化）
+   6. 移动端响应式适配
    ========================================== */
 @media screen and (max-width: 768px) {
-  /* 解决侧边栏在手机端无 hover 无法展开的问题：点击触发器或自身时展开 */
   .sidebar-trigger {
-    width: 45px; /* 加宽手机端左侧触摸热区，方便手指划出 */
+    width: 45px;
   }
 
-  /* 允许点击侧边栏内部或触发器时通过类名控制展开（兼容点击交互） */
   .sidebar-trigger:active + .sidebar,
   .sidebar:active,
   .sidebar.mobile-open {
@@ -401,32 +396,30 @@ html, body {
   }
 
   .sidebar {
-    width: 75vw !important; /* 手机端抽屉宽度更加协调 */
+    width: 75vw !important;
     max-width: 300px;
     z-index: 300;
   }
 
-  /* 适配手机端画廊卡片宽度，避免超出一屏或被挤压 */
+  .gallery-viewport {
+    height: 75vh !important;
+  }
+
   .gallery-item {
     width: 82vw !important;
+    height: 100% !important;
     border-radius: 12px !important;
   }
 
-  .gallery-viewport {
-    height: 60vh !important;
-  }
-
-  /* 缩小手机端两侧导航按钮，防止遮挡核心图片并防止误触 */
   .nav-btn {
     width: 36px !important;
     height: 36px !important;
     font-size: 14px !important;
   }
 
-  .prev-btn { left: 12px !important; }
-  .next-btn { right: 12px !important; }
+  .prev-btn { left: 15px !important; }
+  .next-btn { right: 15px !important; }
 
-  /* 针对经典系列4列网格在手机窄屏下的自动换行/自适应防挤压调整 */
   .grid-container-4 {
     grid-template-columns: repeat(2, 1fr) !important;
     grid-template-rows: repeat(2, 1fr) !important;
@@ -437,27 +430,5 @@ html, body {
   .grid-container-2 {
     gap: 8px !important;
     padding: 10px !important;
-  }
-}
-@media screen and (max-width: 768px) {
-  /* 调整画廊视口高度，减少上下空隙 */
-  .gallery-viewport {
-    height: 75vh !important;
-  }
-  
-  /* 手机端单张或拼图卡片宽度占屏幕更大比例 */
-  .gallery-item {
-    width: 82vw !important;
-    height: 100% !important;
-  }
-
-  /* 调整左右切换按钮位置，避免挡住图片 */
-  .prev-btn { left: 15px !important; }
-  .next-btn { right: 15px !important; }
-  
-  .nav-btn {
-    width: 36px !important;
-    height: 36px !important;
-    font-size: 14px;
   }
 }
