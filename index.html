@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 设置 no-referrer 解决图床防盗链导致图片加载空白的问题 -->
+  <meta name="referrer" content="no-referrer">
+  <title>摄影作品集 Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 顶部右侧导航 -->
+  <nav class="top-nav">
+    <a href="#projects" class="nav-item active">PROJECTS</a>
+    <a href="#about" class="nav-item">ABOUT</a>
+  </nav>
+
+  <!-- 左侧触碰区域与抽屉侧边栏 -->
+  <div class="sidebar-trigger"></div>
+  <aside class="sidebar">
+    <div class="sidebar-brand">WORKS</div>
+
+    <!-- 食品 Food 模块（含 Pizza Hut 细分） -->
+    <div class="menu-category">
+      <div class="category-title">
+        <svg class="category-icon" viewBox="0 0 24 24">
+          <path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2M15 2v10M12 2v6M15 12v10M6 2v7a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V2M8 11v11"/>
+        </svg>
+        <span>食品</span>
+        <span class="en-suffix">Food</span>
+      </div>
+      <ul class="brand-list">
+        <!-- Pizza Hut 嵌套子菜单 -->
+        <li class="brand-group">
+          <span class="brand-title">Pizza Hut</span>
+          <ul class="sub-brand-list">
+            <li class="sub-item active">
+              <a href="javascript:void(0)" onclick="switchSubBrand('Pizza Hut', 'TOM&JERRY', this)">TOM & JERRY</a>
+            </li>
+            <li class="sub-item">
+              <a href="javascript:void(0)" onclick="switchSubBrand('Pizza Hut', '经典系列', this)">经典系列</a>
+            </li>
+            <li class="sub-item">
+              <a href="javascript:void(0)" onclick="switchSubBrand('Pizza Hut', '夏季冰品', this)">夏季冰品</a>
+            </li>
+            <li class="sub-item">
+              <a href="javascript:void(0)" onclick="switchSubBrand('Pizza Hut', '微观', this)">微观</a>
+            </li>
+            <li class="sub-item">
+              <a href="javascript:void(0)" onclick="switchSubBrand('Pizza Hut', '烧烤', this)">烧烤</a>
+            </li>
+            <li class="sub-item">
+              <a href="javascript:void(0)" onclick="switchSubBrand('Pizza Hut', '早餐意面', this)">早餐意面</a>
+            </li>
+            <li class="sub-item">
+              <a href="javascript:void(0)" onclick="switchSubBrand('Pizza Hut', '披萨', this)">披萨</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="brand-item">
+          <a href="javascript:void(0)" onclick="switchSubBrand('KFC', null, this)">KFC</a>
+        </li>
+        <li class="brand-item">
+          <a href="javascript:void(0)" onclick="switchSubBrand('Starbucks', null, this)">Starbucks</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 化妆品 Cosmetics -->
+    <div class="menu-category">
+      <div class="category-title">
+        <svg class="category-icon" viewBox="0 0 24 24">
+          <path d="M9 3h6M10 3v3M14 3v3M6 9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9zM12 11v4M10 13h4"/>
+        </svg>
+        <span>化妆品</span>
+        <span class="en-suffix">Cosmetics</span>
+      </div>
+      <ul class="brand-list">
+        <li class="brand-item"><a href="javascript:void(0)" onclick="switchSubBrand('Dior', null, this)">Dior</a></li>
+        <li class="brand-item">
+          <a href="javascript:void(0)" onclick="switchSubBrand('雅诗兰黛', null, this)">
+            雅诗兰黛 <span class="en-suffix">Estée Lauder</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 人物活动 Events -->
+    <div class="menu-category">
+      <div class="category-title">
+        <svg class="category-icon" viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+        </svg>
+        <span>人物活动</span>
+        <span class="en-suffix">Events</span>
+      </div>
+      <ul class="brand-list">
+        <li class="brand-item"><a href="javascript:void(0)" onclick="switchSubBrand('OMEGA', null, this)">OMEGA</a></li>
+        <li class="brand-item"><a href="javascript:void(0)" onclick="switchSubBrand('浪琴', null, this)">浪琴</a></li>
+      </ul>
+    </div>
+
+    <!-- 建筑 Architecture -->
+    <div class="menu-category">
+      <div class="category-title">
+        <svg class="category-icon" viewBox="0 0 24 24">
+          <path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6a3 3 0 0 1 6 0v6"/>
+        </svg>
+        <span>建筑</span>
+        <span class="en-suffix">Architecture</span>
+      </div>
+      <ul class="brand-list">
+        <li class="brand-item"><a href="javascript:void(0)" onclick="switchSubBrand('VERSACE', null, this)">VERSACE</a></li>
+        <li class="brand-item"><a href="javascript:void(0)" onclick="switchSubBrand('GUCCI', null, this)">GUCCI</a></li>
+        <li class="brand-item"><a href="javascript:void(0)" onclick="switchSubBrand('bubberry', null, this)">bubberry</a></li>
+        <li class="brand-item"><a href="javascript:void(0)" onclick="switchSubBrand('Chloe', null, this)">Chloe</a></li>
+        <!-- LANVIN 像 VERSACE 一样作为同级平铺栏目 -->
+        <li class="brand-item"><a href="javascript:void(0)" onclick="switchSubBrand('LANVIN', null, this)">LANVIN</a></li>
+      </ul>
+    </div>
+  </aside>
+  <div class="sidebar-hint"></div>
+
+  <!-- 画廊主全屏视图 -->
+  <main class="main-content">
+    <button class="nav-btn prev-btn" id="prevBtn" aria-label="上一张">&lt;</button>
+    <button class="nav-btn next-btn" id="nextBtn" aria-label="下一张">&gt;</button>
+
+    <div class="gallery-viewport" id="galleryViewport">
+      <div class="gallery-track" id="galleryTrack"></div>
+    </div>
+
+    <div class="image-counter" id="imageCounter">1 / 1</div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

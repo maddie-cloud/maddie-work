@@ -1,0 +1,385 @@
+/* ==========================================
+   1. 基础重置
+   ========================================== */
+* {
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html, body {
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: #ffffff !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* ==========================================
+   2. 顶部右侧导航
+   ========================================== */
+.top-nav {
+  position: fixed;
+  top: 40px;
+  right: 50px;
+  z-index: 100;
+  display: flex;
+  gap: 30px;
+}
+
+.top-nav .nav-item {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(0, 0, 0, 0.4);
+  transition: color 0.25s ease;
+}
+
+.top-nav .nav-item:hover,
+.top-nav .nav-item.active {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* ==========================================
+   3. 左侧抽屉侧边栏
+   ========================================== */
+.sidebar-trigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 100vh;
+  z-index: 200;
+}
+
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 40px 0 40px 40px !important;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: 201;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.05);
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar-trigger:hover + .sidebar,
+.sidebar:hover {
+  transform: translateX(0);
+}
+
+.sidebar-hint {
+  position: fixed;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 35px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  z-index: 150;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-trigger:hover ~ .sidebar-hint,
+.sidebar:hover ~ .sidebar-hint {
+  opacity: 0;
+}
+
+.sidebar-brand {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 45px !important;
+}
+
+.menu-category {
+  margin-bottom: 24px !important;
+}
+
+.category-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 10px !important;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.category-icon {
+  width: 16px;
+  height: 16px;
+  stroke: rgba(0, 0, 0, 0.7);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.en-suffix {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgba(0, 0, 0, 0.55);
+  margin-left: 2px !important;
+}
+
+.brand-list {
+  list-style: none;
+  padding-left: 22px !important;
+}
+
+.brand-item {
+  margin-bottom: 8px !important;
+}
+
+.brand-item a {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(0, 0, 0, 0.4);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: inline-block;
+}
+
+.brand-item a:hover,
+.brand-item.active a {
+  color: rgba(0, 0, 0, 0.85);
+  padding-left: 3px !important;
+}
+
+/* 嵌套子菜单样式 */
+.brand-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
+  display: block;
+  margin-bottom: 6px !important;
+}
+
+.sub-brand-list {
+  list-style: none;
+  padding-left: 12px !important;
+  margin-bottom: 12px !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.sub-item {
+  margin-bottom: 6px !important;
+}
+
+.sub-item a {
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.sub-item a:hover,
+.sub-item.active a {
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 500;
+  padding-left: 4px !important;
+}
+
+/* ==========================================
+   4. 画廊主视口
+   ========================================== */
+.main-content {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  z-index: 1;
+}
+
+.gallery-viewport {
+  width: 100vw !important;
+  height: 68vh !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.gallery-track {
+  display: flex !important;
+  height: 100% !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  gap: 30px !important;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: transform;
+}
+
+.gallery-item {
+  position: relative !important;
+  flex-shrink: 0 !important;
+  width: 55vw !important;
+  height: 100% !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  background-color: #f8f8f8 !important; 
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.gallery-item img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important; 
+  display: block !important;
+  border-radius: 8px !important;
+  transition: transform 0.8s ease;
+}
+
+/* ==========================================
+   4.1 网格布局预设
+   ========================================== */
+
+/* 经典系列：单行 4 列 */
+.grid-container-4 {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  grid-template-rows: 1fr !important;
+  gap: 10px !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 12px !important;
+}
+
+/* TOM & JERRY 拼图：左右 2 列 */
+.grid-container-2 {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-rows: 1fr !important;
+  gap: 14px !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 14px !important;
+}
+
+.grid-cell {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #f4f4f4 !important;
+}
+
+.grid-cell img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important; /* 完整画面等比显示，零裁切 */
+  border-radius: 0 !important;
+}
+
+.white-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  border-radius: 16px !important;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  backdrop-filter: blur(2px);
+}
+
+.gallery-item.active .white-overlay {
+  opacity: 0;
+}
+
+.gallery-item.active img {
+  transform: scale(1.01);
+}
+
+/* ==========================================
+   5. 最边缘微动效按钮
+   ========================================== */
+.nav-btn {
+  position: fixed !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.prev-btn { left: 30px !important; }
+.next-btn { right: 30px !important; }
+
+.nav-btn:hover {
+  color: rgba(0, 0, 0, 0.9);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.prev-btn:hover {
+  transform: translateY(-50%) translateX(-4px) scale(1.05) !important;
+}
+
+.next-btn:hover {
+  transform: translateY(-50%) translateX(4px) scale(1.05) !important;
+}
+
+.image-counter {
+  position: fixed !important;
+  bottom: 25px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
