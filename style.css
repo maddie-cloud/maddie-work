@@ -241,10 +241,8 @@ html, body {
   height: 100% !important;
   border-radius: 16px !important;
   overflow: hidden !important;
-  background-color: #f8f8f8 !important; 
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+  background-color: transparent !important; 
   cursor: pointer;
-  transition: transform 0.5s ease;
   
   display: flex !important;
   align-items: center !important;
@@ -263,12 +261,45 @@ html, body {
 }
 
 /* ==========================================
-   4.1 网格布局预设
+   4.1 网格与横向排版预设
    ========================================== */
+
+/* 经典系列：4张图从左到右横向平铺在一行，不裁切、不变形 */
+.grid-container-row-4 {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 12px !important;
+}
+
+.grid-container-row-4 .grid-cell {
+  flex: 1 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  border-radius: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: transparent !important;
+}
+
+.grid-container-row-4 .grid-cell img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 4px !important;
+}
+
 .grid-container-4 {
   display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  grid-template-rows: 1fr !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-rows: repeat(2, 1fr) !important;
   gap: 10px !important;
   width: 100% !important;
   height: 100% !important;
@@ -293,7 +324,7 @@ html, body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background-color: #f4f4f4 !important;
+  background-color: transparent !important;
 }
 
 .grid-cell img {
@@ -302,7 +333,7 @@ html, body {
   max-width: 100% !important;
   max-height: 100% !important;
   object-fit: contain !important;
-  border-radius: 0 !important;
+  border-radius: 6px !important;
 }
 
 .white-overlay {
@@ -311,11 +342,11 @@ html, body {
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-color: rgba(255, 255, 255, 0.82) !important;
+  background-color: rgba(255, 255, 255, 0.75) !important;
   border-radius: 16px !important;
   pointer-events: none;
   opacity: 1;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
   backdrop-filter: blur(2px);
 }
 
@@ -362,14 +393,6 @@ html, body {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-.prev-btn:hover {
-  transform: translateY(-50%) translateX(-4px) scale(1.05) !important;
-}
-
-.next-btn:hover {
-  transform: translateY(-50%) translateX(4px) scale(1.05) !important;
-}
-
 .image-counter {
   position: fixed !important;
   bottom: 25px !important;
@@ -379,56 +402,4 @@ html, body {
   letter-spacing: 0.12em;
   color: rgba(0, 0, 0, 0.4);
   z-index: 10;
-}
-
-/* ==========================================
-   6. 移动端响应式适配
-   ========================================== */
-@media screen and (max-width: 768px) {
-  .sidebar-trigger {
-    width: 45px;
-  }
-
-  .sidebar-trigger:active + .sidebar,
-  .sidebar:active,
-  .sidebar.mobile-open {
-    transform: translateX(0) !important;
-  }
-
-  .sidebar {
-    width: 75vw !important;
-    max-width: 300px;
-    z-index: 300;
-  }
-
-  .gallery-viewport {
-    height: 75vh !important;
-  }
-
-  .gallery-item {
-    width: 82vw !important;
-    height: 100% !important;
-    border-radius: 12px !important;
-  }
-
-  .nav-btn {
-    width: 36px !important;
-    height: 36px !important;
-    font-size: 14px !important;
-  }
-
-  .prev-btn { left: 15px !important; }
-  .next-btn { right: 15px !important; }
-
-  .grid-container-4 {
-    grid-template-columns: repeat(2, 1fr) !important;
-    grid-template-rows: repeat(2, 1fr) !important;
-    gap: 6px !important;
-    padding: 8px !important;
-  }
-
-  .grid-container-2 {
-    gap: 8px !important;
-    padding: 10px !important;
-  }
 }
