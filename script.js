@@ -462,4 +462,21 @@ if (mainContent) {
 window.addEventListener('resize', updateSlider);
 
 buildGallery();
+// 手机端点击左侧触发区域或侧边栏时切换展开状态
+const sidebarTrigger = document.querySelector('.sidebar-trigger');
+const sidebar = document.querySelector('.sidebar');
 
+if (sidebarTrigger && sidebar) {
+  sidebarTrigger.addEventListener('click', () => {
+    sidebar.style.transform = sidebar.style.transform === 'translateX(0px)' ? 'translateX(-100%)' : 'translateX(0)';
+  });
+  
+  // 点击侧边栏内部的链接后自动收起侧边栏（提升手机端体验）
+  sidebar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        sidebar.style.transform = 'translateX(-100%)';
+      }
+    });
+  });
+}
